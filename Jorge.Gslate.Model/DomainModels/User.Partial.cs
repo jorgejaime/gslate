@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Jorge.Gslate.Model.DomainModels
 {
-    public partial class Project : EntityBase
+    public partial class User : EntityBase
     {
 
         protected override void Validate()

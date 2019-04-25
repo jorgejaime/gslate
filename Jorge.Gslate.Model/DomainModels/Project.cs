@@ -7,16 +7,14 @@ namespace Jorge.Gslate.Model.DomainModels
     {
         public Project()
         {
-   
+            UserProject = new HashSet<UserProject>();
         }
 
         public int Id { get; set; }
-        public int AppointmentId { get; set; }
-        public DateTime AppointmentDate { get; set; }
-        public int AppointmentTypeId { get; set; }
-        public int PatientId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Credits { get; set; }
 
-
-
+        public virtual ICollection<UserProject> UserProject { get; set; }
     }
 }

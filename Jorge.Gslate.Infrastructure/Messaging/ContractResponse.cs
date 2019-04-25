@@ -7,7 +7,7 @@ namespace Jorge.Gslate.Infrastructure.Messaging
         /// <summary>
         /// Result set of information to return
         /// </summary>
-        public List<T> Data { get; set; }
+        public T Data { get; set; }
 
         /// <summary>
         /// Error handling from the database
@@ -19,15 +19,16 @@ namespace Jorge.Gslate.Infrastructure.Messaging
         /// </summary>
         public bool IsValid { get; set; }
 
-        /// <summary>
-        /// The count of result elements
-        /// </summary>
-        public int DataCount { get; set; }
        
         /// <summary>
         /// The login result message
         /// </summary>
         public string[] ErrorMessages { get; set; }
+
+        public long CountFilter { get; set; }
+
+        public long Count { get; set; }
+
 
     }
 }

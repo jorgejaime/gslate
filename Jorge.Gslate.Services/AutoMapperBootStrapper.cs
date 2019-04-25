@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Jorge.Gslate.Model.DomainModels;
-using Jorge.Gslate.Services.VieModels.Appointment;
+using Jorge.Gslate.Services.VieModels.Project;
+using Jorge.Gslate.Services.VieModels.User;
 
 namespace Jorge.Gslate.Services
 {
@@ -13,6 +14,8 @@ namespace Jorge.Gslate.Services
             {
                 cfg.CreateMap<Project, ProjectView>();
                 cfg.CreateMap<ProjectView, Project>();
+                cfg.CreateMap<User, UserView>().ReverseMap();
+
 
             });
             

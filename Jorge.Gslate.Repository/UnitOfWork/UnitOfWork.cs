@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using Jorge.Gslate.Model.Repositories;
+using Jorge.Gslate.Model.DomainModels;
 
 namespace Jorge.Gslate.Repository.UnitOfWork
 {
@@ -11,6 +12,7 @@ namespace Jorge.Gslate.Repository.UnitOfWork
     {
 
         public IProjectRepository ProjectRepository { get; set; }
+        public IUserRepository UserRepository { get; set; }
 
         /// <summary>
         /// The DbContext
@@ -21,10 +23,11 @@ namespace Jorge.Gslate.Repository.UnitOfWork
         /// Initializes a new instance of the UnitOfWork class.
         /// </summary>
         /// <param name="context">The object context</param>
-        public UnitOfWork(DbContext context, IProjectRepository projectRepository)
+        public UnitOfWork(ProjectContext context, IProjectRepository projectRepository, IUserRepository userRepository)
         {         
             _dbContext = context;
             ProjectRepository = projectRepository;
+            UserRepository = userRepository;
         }
 
 

@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Jorge.Gslate.Infrastructure.Repositories;
+using Jorge.Gslate.Model.DomainModels;
+using Jorge.Gslate.Model.Repositories;
+using Jorge.Gslate.Repository;
+using Jorge.Gslate.Repository.Repositories;
+using Jorge.Gslate.Repository.UnitOfWork;
+using Jorge.Gslate.Services;
+using Jorge.Gslate.Services.Implementatios;
+using Jorge.Gslate.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +26,7 @@ namespace Jorge.Gslate.Web
     {
         public Startup(IConfiguration configuration)
         {
+            AutoMapperBootStrapper.ConfigureAutoMapper();
             Configuration = configuration;
         }
 
@@ -24,6 +35,19 @@ namespace Jorge.Gslate.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+
+            services.AddScoped(typeof(IProjectRepository), typeof(ProjectRepository));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+
+            services.AddScoped(typeof(IProjectService), typeof(ProjectService));
+            services.AddScoped(typeof(IUserService), typeof(UserService));
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

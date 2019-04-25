@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Jorge.Gslate.Model.Context;
 using Jorge.Gslate.Model.DomainModels;
 using Jorge.Gslate.Model.Repositories;
 

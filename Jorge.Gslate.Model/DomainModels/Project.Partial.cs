@@ -8,11 +8,11 @@ namespace Jorge.Gslate.Model.DomainModels
     public partial class Project : EntityBase
     {
 
-        //protected override void Validate()
-        //{
-        //    throw new NotImplementedException();
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
 
-        //}
+        }
 
 
     }
